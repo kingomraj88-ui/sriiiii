@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>For Sriiiii ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#fff5f7,#ffe6f0,#ffd6e8);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  text-align:center;
+}
+
+.page{display:none;width:90%;max-width:420px}
+.active{display:block}
+
+h1{
+  font-family:'Pacifico',cursive;
+  color:#ff4d88;
+  margin-bottom:25px;
+}
+
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  font-size:1rem;
+  cursor:pointer;
+  margin:10px;
+  transition:.3s;
+}
+
+.yes-btn{background:#ff4d88;color:#fff}
+.no-btn{background:#ffc2d9;color:#d63384;position:absolute}
+
+button:hover{transform:scale(1.08)}
+
+/* Hearts & Cry Emojis */
+.float{
+  position:fixed;
+  font-size:22px;
+  bottom:-20px;
+  animation:floatUp 4s linear forwards;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0);opacity:1}
+  100%{transform:translateY(-110vh);opacity:0}
+}
+
+/* Second Page Letter */
+.letter-page h2{
+  font-family:'Pacifico',cursive;
+  color:#ff4d88;
+  margin-bottom:20px;
+}
+
+.envelope{
+  font-size:5rem;
+  cursor:pointer;
+  transition:.3s;
+}
+.envelope:hover{transform:scale(1.1)}
+
+.tap-text{
+  margin-top:10px;
+  color:#ff4d88;
+  font-weight:600;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+
+.letter-box{
+  margin-top:20px;
+  background:#fff;
+  color:#d63384;
+  padding:18px;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(255,105,180,.2);
+  opacity:0;
+  transform:translateY(20px);
+  transition:1s;
+}
+
+.show-letter .letter-box{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.doodles{font-size:1.6rem;margin-top:15px}
+
+</style>
+</head>
+<body>
+
+<!-- Songs -->
+<audio id="song1" loop>
+  <source src="123.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="song2" loop>
+  <source src="second-song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <h1>Will You Be My Valentine My SRIIII ❤️</h1>
+  <button class="yes-btn" onclick="yesClicked()">YES 😍</button>
+  <button class="no-btn" id="noBtn" onclick="noClicked()">NO 😥</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page letter-page" id="page2">
+  <h2>For My Sriiiii 💖</h2>
+  <div class="envelope" onclick="openLetter()">💌</div>
+  <div class="tap-text">Tap 👆🏻 wifey ji ❤️</div>
+
+  <div class="letter-box">
+    <strong>My Beautiful Sriiiii 💕</strong><br><br>
+    (Thank you soooooo much mera pyaara jaanu mere valentine bane ke liye 😚😚😚💓🫶🏻 jaanu ham tho ab married hai na tho ham tho ab life time ke liye ek dusre ke valetine hue na ji 🫠💓 Ye hamra pahla velentine tha na wifey ji 😚 And you know ye jo week raha pura valentine ka na .. wo kya tha sahi mai mujhe nahi pata utna sahi se 🫠.. kya tha wo choclate , taddy, kiss hug or sab days.. nahi pata mujhe wo.. But ye jo sare din thai mai aapke liye wo cheje har din karna chahunga.. Apke saath bitaya har ek din har ek pal ye Puri life meri apki saath mai valentine hai.. ye jo kuch hafto ka week ka pyaar hai mai har ek din karunga apne baccha ke liye.. kyu ke mere baccha mere liye hi mera sab kuch hai 🫠💓 mai dil se rahta hu or dil se rahna chahta hu or dil se rahunga aapke saath ye Puri life or har pal ko pyaar se bitayenge or puri life Kush rahnge saath.. aaphi ho meri liye meri Puri jahaan 🫠💓🫶🏻 
+I LOVE YOU SOOOOOOOOOO MUCH MERA PYAARA BACCHA 😚 😚 😘 💓 🫶🏻 🫂 
+😚😚😚 💌)<br><br>
+    You are my happiness, my peace, and my forever. ❤️
+  </div>
+
+  <div class="doodles">💘 💝 💞 💓 💗 🥰 😍 💕</div>
+</div>
+
+<script>
+const song1=document.getElementById('song1');
+const song2=document.getElementById('song2');
+const noBtn=document.getElementById('noBtn');
+
+// Start first song when page loads (after first interaction)
+document.body.addEventListener('click',()=>{
+  song1.play();
+},{once:true});
+
+function yesClicked(){
+  popHearts();
+  song1.pause();
+  song2.play();
+  document.getElementById('page1').classList.remove('active');
+  document.getElementById('page2').classList.add('active');
+}
+
+function noClicked(){
+  moveNo();
+  cryEmojis();
+}
+
+function moveNo(){
+  const x=Math.random()*250;
+  const y=Math.random()*400;
+  noBtn.style.left=x+'px';
+  noBtn.style.top=y+'px';
+}
+
+function popHearts(){
+  const emojis=['💖','💘','💝','💗','💓','💕','💞'];
+  for(let i=0;i<30;i++){
+    const el=document.createElement('div');
+    el.classList.add('float');
+    el.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+    el.style.left=Math.random()*100+'vw';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),4000);
+  }
+}
+
+function cryEmojis(){
+  for(let i=0;i<20;i++){
+    const el=document.createElement('div');
+    el.classList.add('float');
+    el.innerHTML='😢';
+    el.style.left=Math.random()*100+'vw';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),4000);
+  }
+}
+
+function openLetter(){
+  document.getElementById('page2').classList.add('show-letter');
+  popHearts();
+}
+</script>
+
+</body>
+</html>
